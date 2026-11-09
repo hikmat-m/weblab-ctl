@@ -1,0 +1,47 @@
+domain: "lab.local"
+network_name: "weblab-ctl_network"
+project_label: "weblab-ctl"
+hosts_file: "/etc/hosts"
+dnsmasq_conf: "/etc/dnsmasq.d/weblab-ctl.conf"
+dnsmasq_enabled: true
+
+apps:
+  juice-shop:
+    hostname: "juice.lab.local"
+    image: "bkimminich/juice-shop:latest"
+    container: "juice-shop"
+    ports: ["3000:3000"]
+    url: "http://juice.lab.local"
+
+  dvwa:
+    hostname: "dev.lab.local"
+    image: "vulnerables/web-dvwa:latest"
+    container: "dvwa"
+    ports: ["8080:80"]
+    url: "http://dev.lab.local"
+
+  webgoat:
+    hostname: "admin.lab.local"
+    image: "webgoat/goatandwolf:latest"
+    container: "webgoat"
+    ports: ["8081:8080", "9090:9090"]
+    url: "http://admin.lab.local/WebGoat"
+
+  mutillidae:
+    hostname: "www.lab.local"
+    image: "citizenstig/nowasp-mutillidae:latest"
+    container: "mutillidae"
+    ports: ["8082:80"]
+    url: "http://www.lab.local"
+
+  # Example custom app (commented out)
+  # custom-app:
+  #   hostname: "custom.lab.local"
+  #   image: "myorg/myapp:latest"
+  #   container: "custom-app"
+  #   ports: ["8083:80"]
+  #   url: "http://custom.lab.local"
+  #   env:
+  #     DEBUG: "true"
+  #   volumes:
+  #     - "./data:/app/data"

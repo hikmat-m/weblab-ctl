@@ -1,0 +1,38 @@
+[project]
+name = "weblab-ctl"
+version = "1.0.0"
+description = "Centralized Docker manager for vulnerable web app labs with DNS/hosts automation"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Hikmat Mammadli"}
+]
+requires-python = ">=3.8"
+dependencies = [
+    "docker>=6.0",
+    "pyyaml>=6.0",
+]
+
+[project.entry-points."console_scripts"]
+weblab-ctl = "weblab_ctl.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.1",
+    "mypy>=1.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["weblab_ctl*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
